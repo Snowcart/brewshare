@@ -1,0 +1,83 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id        Int         @id @default(autoincrement())
+  name      String?     @db.VarChar(255)
+  password  String      
+  phone     String?     @db.VarChar(255)
+  email     String      @db.VarChar(255) @unique
+  Group     Group[]
+  groups    GroupUser[]
+  payeeUser Order[]     @relation("payeeUser")
+  orderUser Order[]     @relation("orderUser")
+  OrderItem OrderItem[]
+}
+
+model GroupUser {
+  id      Int   @id @default(autoincrement())
+  userId  Int
+  groupId Int
+  role    Role
+  group   Group @relation(fields: [groupId], references: [id])
+  user    User  @relation(fields: [userId], references: [id])
+}
+
+model Group {
+  id        Int         @id @default(autoincrement())
+  name      String      @db.VarChar(255)
+  creatorId Int
+  groupId   Int
+  nickanme  String?
+  creator   User        @relation(fields: [creatorId], references: [id])
+  users     GroupUser[]
+  Order     Order[]
+}
+
+model Order {
+  id            Int         @id @default(autoincrement())
+  groupId       Int
+  userId        Int
+  status        OrderStatus
+  createdAt     DateTime
+  updatedAt     DateTime
+  date          DateTime
+  payeeId       Int
+  receipientUrl String
+  group         Group       @relation(fields: [groupId], references: [id])
+  payee         User        @relation("payeeUser", fields: [payeeId], references: [id])
+  user          User        @relation("orderUser", fields: [userId], references: [id])
+  OrderItem     OrderItem[]
+}
+
+model OrderItem {
+  id          Int     @id @default(autoincrement())
+  orderId     Int
+  name        String
+  userId      Int
+  description String?
+  subPrice    Float?
+  totalPrice  Float?
+  paid        Boolean
+  order       Order   @relation(fields: [orderId], references: [id])
+  user        User    @relation(fields: [userId], references: [id])
+}
+
+enum Role {
+  ADMIN
+  USER
+}
+
+enum OrderStatus {
+  ACCEPTING
+  LOCKED
+  PAID
+  WAITINGONPAYMENT
+  COMPLETE
+}

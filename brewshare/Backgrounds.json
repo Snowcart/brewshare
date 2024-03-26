@@ -1,0 +1,92 @@
+[
+    {
+      "name": "humanDebris",
+      "label": "Human Debris",
+      "description": "You were sold into slavery at a young age, and became nothing but a tool to the corporations. Tuned like a machine, they forced you into the Neuro Load Amplifier surgery. Having escaped the corporation you worked for, you haven't been able to escape what you are.",
+      "quote": "Once Human Debris, always Human Debris. I've done nothing but try and make a name for myself, but no one will ever see me any different.",
+      "attribution": "Matsuyumi Bezuka",
+      "src" : "/backgrounds/Human_Debris.png",
+      "features": [
+        {
+          "name": "humanDebrisMods",
+          "label": "Pilot Stat Modifiers",
+          "description": "The modifiers for human debris background. ",
+          "type": "passive",
+          "active": true,
+          "uses": 0,
+          "usesRemaining": 0,
+          "pilotModifiers": {
+            "reflex": 1,
+            "sway": -6,
+            "insight": 0,
+            "mechanics": 1,
+            "grit": 1
+          },
+          "visible": false
+        },
+        {
+          "name": "neuroLoadAmplifier",
+          "label": "Neuro Load Amplifier",
+          "description": "The NLA is a surgery that adds an interlink to EXO technology. Acting as a third brain lobe, the interface gives you the situation awareness of your EXO. +2 to EXOFRAME RESP",
+          "type": "passive",
+          "active": true,
+          "uses": 0,
+          "usesRemaining": 0,
+          "PilotModifiers": null,
+          "visible": true,
+          "frameModifiers": {
+            "strength": 0,
+            "lockOn": 0,
+            "response": 2,
+            "armor": 0,
+            "expansionBay": 0
+          }
+        },
+        {
+          "name": "suicideMission",
+          "label": "Suicide Mission",
+          "description": "You have been taught that your life is less valuable than others. You act recklessly as you charge into battle with no intent to make it out alive. Add +2 to STRG, RESP and LOCK for one turn. Add -3 to ARMR for one turn.",
+          "type": "active",
+          "uses": 1,
+          "usesRemaining": 1,
+          "PilotModifiers": null,
+          "visible": true,
+          "frameModifiers": {
+            "strength": 2,
+            "lockOn": 2,
+            "response": 2,
+            "armor": -3,
+            "expansionBay": 0
+          }
+        }
+      ]
+    },
+    {
+      "name": "corporateRoyalty",
+      "label": "Corporate Royalty",
+      "description": "You are born of someone higher up in the corporate ladder, and thus are someone of high imporantnce to the system. Whether a child of the big 7 corporations, or simply part of the corporate blocks your voice contains sway. Some may listen to you, others may despise you.",
+      "quote": "I simply will not stand by and continue to let the corporations do as they please. I will make a change, and I will make it now.",
+      "attribution": "Robbie Antran during the Battle of the 7th Block",
+      "src" : "/backgrounds/Corporate_Royalty.png",
+      "features": [
+        {
+          "name": "corporateRoyalty",
+          "label": "Corporate Royalty Modifiers",
+          "description": "The modifiers for Corporate Royalty background. ",
+          "type": "passive",
+          "active": true,
+          "uses": 0,
+          "usesRemaining": 0,
+          "pilotModifiers": {
+            "reflex": 0,
+            "sway": 4,
+            "insight": 2,
+            "mechanics": 0,
+            "grit": -2
+          },
+          "visible": false
+        }
+      ]
+    }
+
+]
